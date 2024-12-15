@@ -1,7 +1,7 @@
 ---
 author: Rishab Sharma 
 date: '2024-12-15T01:06:38+05:30'
-draft: true
+draft: false
 title: 'Maximum Likelihood Estimation and Loss Functions'
 tags: ["ML Estimation", "KL Divergence", "Loss Functions", "MSE Loss", "Cross Entropy Loss"]
 series: ["Themes Guide"]
@@ -11,11 +11,11 @@ font_size: 5
 
 When I started learning about loss functions, I could always understand the intuition behind them. For example, the mean squared error (MSE) for regression seemed logical—penalizing large deviations from the ground-truth makes sense. But one thing always bothered me: I could never come up with those loss functions on my own. Where did they come from? Why do we use these specific formulas and not something else? 
 
-This frustration led me to dig deeper into the mathematical and probabilistic foundations of loss functions. It turns out, the answers lie in a concept called Maximum Likelihood Estimation (MLE). In this blog, I’ll take you through this journey, showing how these loss functions are not arbitrary but derive naturally from statistical principles. I'll start by defining what Maximum Likelihood Estimation (MLE) is followed by the intricate connection between Maximum Likelihood Estimation (MLE) and Kullback-Leibler (KL) divergence. 
+This frustration led me to dig deeper into the mathematical and probabilistic foundations of loss functions. It turns out, the answers lie in a concept called Maximum Likelihood Estimation (MLE). In this blog, I’ll take you through this journey, showing how these loss functions are not arbitrary but derive naturally from statistical principles. I'll start by defining what Maximum Likelihood Estimation (MLE) is, followed by the intricate connection between Maximum Likelihood Estimation (MLE) and Kullback-Leibler (KL) divergence. To conclude this article, I show how loss functions like Mean Squared Error loss and Binary Cross Entropy can be derived from Maximum Likelihood estimation.  
 
 ## Maximum Likelihood estimation (MLE)
 
-Consider a dataset of $ m $ samples $ \mathbb{X} = \\{\mathbf{x^{(1)}}, \dots, \mathbf{x^{(m)}}\\} $ where $ \mathbf{x^{(i)}} \in \mathbb{R}^n $ drawn independently (i.i.d) from the true but unknown data generating distribution $ p_{\text{data}}(\boldsymbol{x}) $. The i.i.d assumption is made in order to simplify the theoretical foundation of many machine learning algorithms. 
+Consider a dataset of $ m $ samples $ \mathbb{X} = \\{\mathbf{x^{(1)}}, \dots, \mathbf{x^{(m)}}\\} $ where $ \mathbf{x^{(i)}} \in \mathbb{R}^n $ is drawn independently (i.i.d) from the true but unknown data generating distribution $ p_{\text{data}}(\boldsymbol{x}) $. The i.i.d assumption is made in order to simplify the theoretical foundation of many machine learning algorithms. 
 
 Let $ p_{\text{model}}(\boldsymbol{x}; \theta) $ be a parametric family of distributions over a space of parameters $ \theta $. The key idea here is that we are trying to estimate the unknown true distribution $ p_{\text{data}}(\boldsymbol{x}) $ using the model $ p_{\text{model}}(\boldsymbol{x}; \theta) $. 
 
@@ -36,10 +36,13 @@ $$
 This is not the best form to represent this estimator in because of the product over many probabilities. This leads to problems like numerical underflow. We observe that taking the logarithm of the likelihood does not change the solution of the $ \arg\max $. This conveniently changes the product into a sum.
 
 $$
-    \theta_{ML} = \arg\max_\theta \sum \log p_{\text{model}}(\boldsymbol{x^{(i)}}; \theta)
+    \begin{align*}
+        \theta_{ML} &= \arg\max_\theta \log \prod_{i = 1}^m p_{\text{model}}(\boldsymbol{x^{(i)}}; \theta) \\\\
+        \theta_{ML} &= \arg\max_\theta \sum \log p_{\text{model}}(\boldsymbol{x^{(i)}}; \theta)
+    \end{align*}
 $$
 
-One additional observation is that rescaling the cost function does not change the $ \arg\max $. We can divide the above expression by $ m $ to obtain the cost function in terms of an expectation. We arrive at this expectation assuming Monte Carlo Approximation over a large number of samples. 
+One additional observation is that rescaling the cost function does not change the solution of the $ \arg\max $. We can divide the above expression by $ m $ to obtain the cost function in terms of an expectation. We arrive at this expectation assuming Monte Carlo Approximation over a large number of samples. 
 
 $$
     \begin{align*}
@@ -99,9 +102,9 @@ Now that we have seen KL Divergence, it will be easier to go through the connect
 
 ## Connecting MLE to KL Divergence
 
-So far, we have seen KL Divergence and MLE as two different concepts. However, there is an intricate connection between them. It turns out that minimizing the KL divergence is equivalent to maximizing the ML Estimator. As discussed in this [article](https://researchweb.iiit.ac.in/~md.faizal/articles/like-kl.html), I'll be going through the proof of their equivalence. 
+So far, we have seen KL Divergence and MLE as two different concepts. However, there is an intricate connection between them. It turns out that minimizing the KL divergence is equivalent to maximizing the ML Estimator. As discussed in the [article](https://researchweb.iiit.ac.in/~md.faizal/articles/like-kl.html), I'll be going through the proof of their equivalence. 
 
-As defined earlier, let $ p_{\text{data}}(\boldsymbol{x}, y) $ be the true data distribution which is unknown and $ p_{\text{model}}(x; \theta) $ be our model distribution which we are trying to learn. We are trying to estimate the true distribution with our model distribution by finding good estimates to its parameters $ \theta $. 
+As defined earlier, let $ p_{\text{data}}(\boldsymbol{x}) $ be the true data distribution which is unknown and $ p_{\text{model}}(\boldsymbol{x}; \theta) $ be our model distribution which we are trying to learn. We are trying to estimate the true distribution with our model distribution by finding good estimates to its parameters $ \theta $. 
 
 $$
     \begin{align*}
@@ -112,7 +115,7 @@ $$
     \end{align*}
 $$
 
-The final expression above is equivalent to the Maximum Likelihood Estimator in $ eq. (1) $. Thus, it is proved that minimizing the KL divergence between $ p_{\text{data}}(\boldsymbol{x}, y) $ and  $ p_{\text{model}}(\boldsymbol{x^{(i)}}; \theta) $ is equivalent to maximizing the likelihood of $ p_{\text{model}}(\boldsymbol{x^{(i)}}; \theta) $. 
+The final expression above is equivalent to the Maximum Likelihood Estimator in $ eq. (1) $. Thus, it is proved that minimizing the KL divergence between $ p_{\text{data}}(\boldsymbol{x}) $ and  $ p_{\text{model}}(\boldsymbol{x}; \theta) $ is equivalent to maximizing the likelihood of $ p_{\text{model}}(\boldsymbol{x}; \theta) $. 
 
 ## Mean Squared Error as Maximum Likelihood
 
@@ -120,17 +123,17 @@ I follow the proof given in the [deep learning book](http://www.deeplearningbook
 
 ### Linear Regression
 
-{{< figure src="/images/ml_estimation/linear_regression.png" attr="Fig 1. Linear regression with scalar inputs and outputs" align=center target="_blank" style="width: 30%; height: auto;">}}
+{{< figure src="/blog/images/ml_estimation/linear_regression.png" attr="Fig 1. Linear regression with scalar inputs and outputs" align=center target="_blank" style="width: 30%; height: auto;">}}
 
 First let's define linear regression. The end goal is to take a vector $ x \in \mathbb{R}^d $ and map it into into a scalar $ y \in \mathbb{R} $. The output is a linear function of the input. Let $ \hat{y} $ be the prediction made by our model. We define the model to be
 
 $$
-    \hat{y} = \boldsymbol{w^\top} \boldsymbol{x}
+    \boldsymbol{\hat{y}} = \boldsymbol{w^\top} \boldsymbol{x}
 $$
 
 Here, $ \boldsymbol{w} \in \mathbb{R}^n $ is a vector of parameters.
 
-Let's vectorize this further. Let's say we have a dataset $ (X^{(train)}, \boldsymbol{y^{(train)}}) $. Here $ X^{(train)} \in \mathbb{R}^{m \times n} $ is a matrix with $ m $ samples of vectors in $ \mathbb{R}^n $. Also, $ \boldsymbol{y^{(train)}} \in \mathbb{R}^m $ is $ m $ samples of scalars written as a vector. Let $ \hat{y}^{\text{(train)}} \in \mathbb{R}^m $ be the predictions from our model. We now define the model to be 
+Let's vectorize this further. Let's say we have a dataset $ (X^{(train)}, \boldsymbol{y^{(train)}}) $. Here $ X^{(train)} \in \mathbb{R}^{m \times n} $ is a matrix with $ m $ samples of vectors in $ \mathbb{R}^n $. Also, $ \boldsymbol{y^{(train)}} \in \mathbb{R}^m $ is $ m $ samples of scalars written as a vector. Let $ \boldsymbol{\hat{y}^{\text{(train)}}} \in \mathbb{R}^m $ be the predictions from our model. We now define the model to be 
 
 $$
     \boldsymbol{\hat{y}^{\text{(train)}}} = X^{(train)} \boldsymbol{w}
@@ -169,7 +172,7 @@ Therefore, maximizing the conditional log likelihood under some given assumption
 
 ### Logistic Regression
 
-{{< figure src="/images/ml_estimation/logistic_regression.png" attr="Fig 2. Sigmoid vs Step function. Sigmoid is a better choice for binary classification because it is differentiable at all points in its domain" align=center target="_blank" style="width: 30%; height: auto;">}}
+{{< figure src="/blog/images/ml_estimation/logistic_regression.png" attr="Fig 2. Sigmoid vs Step function. Sigmoid is a better choice for binary classification because it is differentiable at all points in its domain" align=center target="_blank" style="width: 30%; height: auto;">}}
 
 We can generalize linear regression to classification tasks to obtain logistic regression. The end goal of any supervised learning task is to estimate $ \theta $ for the model distribution $ p_{\text{model}}(y | \boldsymbol{x}; \theta) $ by looking at samples from the dataset. In classification, the targets $ y $ can assume binary values $ 0 $ or $ 1 $. This can be solved using the sigmoid function which outputs values in the interval $ (0, 1) $. The outputs of sigmoid can be interpreted as probability values. 
 
@@ -201,15 +204,24 @@ $$
 
 And there we have it. The final expression of binary cross entropy is derived from maximum likelihood estimation. Remember that $ p := P(y = 1 | \boldsymbol{x}; \theta) = \sigma(\theta^\top \boldsymbol{x}) $, which is the prediction from our model. Since $ p $ is a function of $ \mathbf{x} $, the term in the summation should technically be $ p(\mathbf{x_i}) $ but I have omitted it for simplicity. 
 
+Throughout this blog, we’ve explored the importance of Maximum Likelihood Estimation (MLE) as a foundation for deriving many widely used loss functions in machine learning. I have tried to summarize everything that I have learned from books that I am currently reading, to the best of my knowledge. I hope it serves as a helpful resource for others delving into this topic.  
+
 ## Citation
 
-```
-@misc{author2024title,
-  author       = {Rishab Sharma},
-  title        = {Maximum Likelihood Estimation and Loss Functions},
-  year         = {2024},
-  month        = {Dec},
-  howpublished = "https://rish-01.github.io/posts/ml_estimation/",
+Cited as:
+
+> Rishab Sharma. (Dec 2024). Maximum Likelihood Estimation and Loss Functions. https://rish-01.github.io/blog/posts/ml_estimation/
+
+or
+
+```bibtex
+@article{Rishab2024mlestimate,
+  author       = "Rishab Sharma",
+  title        = "Maximum Likelihood Estimation and Loss Functions",
+  journal      = "rish-01.github.io/blog",
+  year         = "2024",
+  month        = "Dec",
+  howpublished = "https://rish-01.github.io/blog/posts/ml_estimation/",
 }
 
 ```
