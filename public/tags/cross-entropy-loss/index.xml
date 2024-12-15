@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cross Entropy Loss on Rish&#39;s AI Notes</title>
+    <link>http://localhost:1313/tags/cross-entropy-loss/</link>
+    <description>Recent content in Cross Entropy Loss on Rish&#39;s AI Notes</description>
+    <image>
+      <title>Rish&#39;s AI Notes</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.139.4</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Dec 2024 01:06:38 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cross-entropy-loss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maximum Likelihood Estimation and Loss Functions</title>
+      <link>http://localhost:1313/posts/ml_estimation/</link>
+      <pubDate>Sun, 15 Dec 2024 01:06:38 +0530</pubDate>
+      <guid>http://localhost:1313/posts/ml_estimation/</guid>
+      <description>&lt;p&gt;When I started learning about loss functions, I could always understand the intuition behind them. For example, the mean squared error (MSE) for regression seemed logical—penalizing large deviations from the ground-truth makes sense. But one thing always bothered me: I could never come up with those loss functions on my own. Where did they come from? Why do we use these specific formulas and not something else?&lt;/p&gt;
+&lt;p&gt;This frustration led me to dig deeper into the mathematical and probabilistic foundations of loss functions. It turns out, the answers lie in a concept called Maximum Likelihood Estimation (MLE). In this blog, I’ll take you through this journey, showing how these loss functions are not arbitrary but derive naturally from statistical principles. I&amp;rsquo;ll start by defining what Maximum Likelihood Estimation (MLE) is followed by the intricate connection between Maximum Likelihood Estimation (MLE) and Kullback-Leibler (KL) divergence.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
