@@ -53,7 +53,7 @@ $$
 
 ### Conditional Log Likelihood
 
-Consider a dataset of $ m $ samples $ \\{ (\mathbf{x^{(1)}}, y^{(m)}), \dots, (\mathbf{x^{(m)}}, y^{(m)}) \\} $ drawn independently (i.i.d) from the true but unknown data generating distribution $ p_{\text{data}}(\boldsymbol{x}, y) $. Here $ (\mathbf{x^{(i)}}, y^{(i)}) \in \mathbb{R}^n \times \mathcal{Y} $. In most supervised learning settings, we need to estimate the conditional probability $ P(y | \boldsymbol{x}; \theta) $ in order to predict $ y $ given $ x $. Let's say $ X $ represents all of our inputs and $ Y $ represents all of our targets, then the conditional maximum likelihood estimator is given by: 
+Consider a dataset of $ m $ samples $ \\{ (\mathbf{x^{(1)}}, y^{(1)}), \dots, (\mathbf{x^{(m)}}, y^{(m)}) \\} $ drawn independently (i.i.d) from the true but unknown data generating distribution $ p_{\text{data}}(\boldsymbol{x}, y) $. Here $ (\mathbf{x^{(i)}}, y^{(i)}) \in \mathbb{R}^n \times \mathcal{Y} $. In most supervised learning settings, we need to estimate the conditional probability $ P(y | \boldsymbol{x}; \theta) $ in order to predict $ y $ given $ x $. Let's say $ X $ represents all of our inputs and $ Y $ represents all of our targets, then the conditional maximum likelihood estimator is given by: 
 
 $$
     \theta_{ML} = \arg\max_\theta P(Y | X; \theta)
@@ -195,7 +195,7 @@ In logistic regression too, $ \theta $ can be estimated using maximum likelihood
 
 $$
     \begin{align*}
-        \theta_{ML} &= \arg\max_\theta \sum_{i = 1}^m \log (y^{(i)} | \boldsymbol{x}^{(i)}; \theta) \\\\
+        \theta_{ML} &= \arg\max_\theta \sum_{i = 1}^m \log P (y^{(i)} | \boldsymbol{x}^{(i)}; \theta) \\\\
         &= \arg\max_\theta \sum_{i = 1}^m \log p^{y^{(i)}} (1 - p)^{(1 - y^{(i)})} \\\\
         &= \arg\max_\theta \sum_{i = 1}^m (y^{(i)}) \log p + (1 - y^{(i)}) \log (1 - p)\\\\
         &= \arg\min_\theta -\sum_{i = 1}^m (y^{(i)}) \log p + (1 - y^{(i)}) \log (1 - p)
