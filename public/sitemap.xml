@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/tags/cross-entropy-loss/</loc>
-    <lastmod>2024-12-15T01:06:38+05:30</lastmod>
+    <loc>http://localhost:1313/blog/tags/evidence-lower-bound/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/tags/kl-divergence/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/ml-estimation/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/variational-autoencoders/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/vae/</loc>
+    <lastmod>2025-03-06T00:13:00+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/cross-entropy-loss/</loc>
     <lastmod>2024-12-15T01:06:38+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/tags/loss-functions/</loc>
@@ -14,19 +35,7 @@
     <loc>http://localhost:1313/blog/posts/ml_estimation/</loc>
     <lastmod>2024-12-15T01:06:38+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/ml-estimation/</loc>
-    <lastmod>2024-12-15T01:06:38+05:30</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/tags/mse-loss/</loc>
-    <lastmod>2024-12-15T01:06:38+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/posts/</loc>
-    <lastmod>2024-12-15T01:06:38+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-12-15T01:06:38+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/tags/</loc>
     <lastmod>2024-12-15T01:06:38+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/archives/</loc>
