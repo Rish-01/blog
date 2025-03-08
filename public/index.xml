@@ -11,8 +11,22 @@
     </image>
     <generator>Hugo -- 0.139.4</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Dec 2024 01:06:38 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 06 Mar 2025 00:13:00 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Variational Autoencoders and Maximum Likelihood Estimation</title>
+      <link>http://localhost:1313/blog/posts/vae/</link>
+      <pubDate>Thu, 06 Mar 2025 00:13:00 +0530</pubDate>
+      <guid>http://localhost:1313/blog/posts/vae/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;https://rish-01.github.io/blog/posts/ml_estimation/&#34;&gt;previous blog&lt;/a&gt;, we explored maximum likelihood estimation (MLE) and how it can be used to derive commonly used loss functions. It also turns out that MLE is widely being used in generative models like Variational Autoencoders (VAE) and Diffusion models (DDPM).&lt;/p&gt;
+&lt;p&gt;In this blog, we will explore how the loss function of Variational Autoencoders are derived. VAEs are latent variable generative models. They can solve a few tasks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Act as a generative model that mimics the data distribution that it was trained on.&lt;/li&gt;
+&lt;li&gt;Approximate posterior inference of the latent variable $z$ given an observed variable $x$. In other words, it can be used to learn lower dimensional representations of the data it was trained on.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;preliminary-information&#34;&gt;Preliminary Information&lt;/h2&gt;
+&lt;p&gt;In this section, let us explore the tools necessary to derive a tractable form of the log-likelihood that we need to optimize.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Maximum Likelihood Estimation and Loss Functions</title>
       <link>http://localhost:1313/blog/posts/ml_estimation/</link>
