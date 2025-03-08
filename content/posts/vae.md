@@ -218,14 +218,6 @@ $$
     \end{align*}
 $$
 
-$\mu(\boldsymbol{x_i}), \Sigma(\boldsymbol{x_i})$
-
-$\boldsymbol{z_i} =\mu_{\phi}(\boldsymbol{x_i}) + \sigma_{\phi}(\boldsymbol{x_i}) \odot \boldsymbol{\epsilon_i} \quad \boldsymbol{\epsilon_i} \sim \mathcal{N}(0, I)$ 
-
-$(\text{Here},\boldsymbol{z_i} \sim q_{\phi}(\boldsymbol{z}|\boldsymbol{x_i}))$
-
-$\boldsymbol{x_i} \sim p_{\theta}(\boldsymbol{x}|\boldsymbol{z_i})$
-
 ## Citation
 
 Cited as:
