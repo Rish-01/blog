@@ -1,6 +1,7 @@
 baseURL: "https://rish-01.github.io/blog"
 title: Rish's AI Notes
-paginate: 5
+pagination:
+  pagerSize: 10
 theme: [PaperMod]
 
 enableRobotsTXT: true
@@ -76,7 +77,6 @@ params:
   homeInfoParams:
     Title: "Welcome to Rish's AI Notes \U0001F44B"
     Content: Hi, this is Rishab. I’m currently an MSCS student at UMass Amherst and previously worked as a Predoctoral Research Fellow at IISc. I created this blog to share topics and ideas that I find fascinating in Machine Learning and Deep Learning.
-
 
   socialIcons:
     # - name: x

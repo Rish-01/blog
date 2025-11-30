@@ -15,7 +15,7 @@ on:
       hugoVersion:
         description: "Hugo Version"
         required: false
-        default: "0.125.7"
+        default: "0.152.2" 
 
 # Allow one concurrent deployment
 concurrency:
@@ -38,12 +38,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: ${{ github.event.inputs.hugoVersion || '0.125.7' }}
+      HUGO_VERSION: ${{ github.event.inputs.hugoVersion || '0.152.2' }}  # updated default
     steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -62,11 +64,12 @@ jobs:
             --baseURL ${{ steps.pages.outputs.base_url }}
       - name: Add .nojekyll file
         run: |
-          touch ./public/.nojekyll  # Create the .nojekyll file
+          touch ./public/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+
   # Deployment job
   deploy:
     environment:
