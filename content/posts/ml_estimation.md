@@ -109,9 +109,9 @@ As defined earlier, let $ p_{\text{data}}(\boldsymbol{x}) $ be the true data dis
 $$
     \begin{align*}
         \arg\min_\theta D_{KL}(p_{\text{data}}||p_{\text{model}}) &= \arg\min_\theta \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[ \log \frac{p_{\text{data}}(\boldsymbol{x})}{p_{\text{model}}(\boldsymbol{x}; \theta)} \right] \\\\
-        &= \arg\min_\theta \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[\log p_{\text{data}}(\boldsymbol{x})\right] - \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[p_{\text{model}}(\boldsymbol{x}; \theta)\right] \\\\
-        &= \arg\min_\theta - \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[p_{\text{model}}(\boldsymbol{x}; \theta)\right] \quad \left( \text{Data distribution doesn't depend on } \theta \right) \\\\
-        &= \arg\max_\theta \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[p_{\text{model}}(\boldsymbol{x}; \theta)\right]
+        &= \arg\min_\theta \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[\log p_{\text{data}}(\boldsymbol{x})\right] - \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[\log p_{\text{model}}(\boldsymbol{x}; \theta)\right] \\\\
+        &= \arg\min_\theta - \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[\log p_{\text{model}}(\boldsymbol{x}; \theta)\right] \quad \left( \text{Data distribution doesn't depend on } \theta \right) \\\\
+        &= \arg\max_\theta \mathbb{E}\_{\mathbf{x} \sim p_{\text{data}}} \left[\log p_{\text{model}}(\boldsymbol{x}; \theta)\right]
     \end{align*}
 $$
 
